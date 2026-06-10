@@ -1,4 +1,4 @@
-# Sequential Modelling Portfolio
+# Sequential Modelling 
 
 Neural sequence modelling from scratch — RNN, LSTM, and transformer implementations with an incremental build approach. Culminates in mechanistic interpretability work using typoglycemic perturbations as probes — tracking cosine similarity of next predicted logits and WordNet-based word relatedness of next word predictions to locate where and how GPT-style models resolve surface-level distortions in learned representations.
 
@@ -14,7 +14,7 @@ The three projects are ordered by conceptual dependency. The attention mechanism
 
 ## Projects
 
-### [01 — RNN to LSTM](https://github.com/your-username/seq-models-01-rnn-to-lstm)
+### [01 — RNN to LSTM](https://github.com/Dorcas-Joy-Kahunguka/seq-models-01-rnn-to-lstm)
 
 An incremental build from a general-purpose vanilla RNN through to a full LSTM, with each step introducing a single architectural change against a fixed task.
 
@@ -31,7 +31,7 @@ The structure is designed so that each step is a minimal delta on the previous o
 
 ---
 
-### [02 — Transformers](https://github.com/your-username/seq-models-02-transformers)
+### [02 — Transformers](https://github.com/Dorcas-Joy-Kahunguka/seq-models-02-transformers)
 
 From-scratch implementations of two transformer architectures: a full encoder-decoder transformer suited to seq2seq tasks, and a decoder-only (GPT-style) transformer for causal language modelling.
 
@@ -39,7 +39,7 @@ Built after Project 1 so that the move from Bahdanau attention to self-attention
 
 ---
 
-### [03 — Mechanistic Interpretability via Typoglycemic Probing](https://github.com/your-username/seq-models-03-mechinterp-typoglycemia)
+### [03 — Mechanistic Interpretability via Typoglycemic Probing](https://github.com/Dorcas-Joy-Kahunguka/seq-models-03-mechinterp-typoglycemia)
 
 Mechanistic interpretability of GPT-style transformers using typoglycemic perturbations — probing where and how learned representations handle surface-level distortions, and whether next-word prediction behaviour is sensitive to input surface form.
 
