@@ -19,13 +19,14 @@ def split_context_target(sentences):
 
     pairs = []
     for s in sentences:
+        print(s)
         words = s.rstrip(".!?").split()
         #print(words)
         target = words[-1]
         context = " ".join(words[:-1])
         
         pairs.append((context, target))
-
+    print(pairs)
     return pairs
 
 def build_cst_triplets(sentences):
@@ -43,7 +44,8 @@ def build_cst_triplets(sentences):
 
 def generate_cst_json(cst_triplets):
     # Unpack each field into its own list; zip(*cst_triplets) transposes rows into columns returns tuples
-    clean_tuple, scramble_tuple, target_tuple = zip(*cst_triplets)
+    clean_tuple, scramble_tuple, target_tuple = zip(*(dict_entry.values() for dict_entry in cst_triplets))
+    print(clean_tuple, scramble_tuple, target_tuple)
 
     #For downstream conversion into JSON files with explicit index labels. Keyed by matching string index so clean_dict[i], scramble_dict[i], and target_dict[i] always refer to the same example when the three JSON files are loaded separately
     clean_dict = {str(i): v for i, v in enumerate(clean_tuple)}

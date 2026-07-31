@@ -1,10 +1,10 @@
 import re
 import random
 def scramble_word(word):
-        match = re.match(r'^([a-zA-Z]+)([^a-zA-Z]*)$', word)
+        match = re.match(r"^([a-zA-Z]+)(['\-a-zA-Z]*)([^a-zA-Z]*)$", word)
         if not match:
             return word,
-        core, suffix = match.group(1), match.group(2)
+        core, suffix = match.group(1)+ match.group(2), match.group(3)
         if len(core) <=3:
             return word
         else:
