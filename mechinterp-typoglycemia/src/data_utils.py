@@ -1,6 +1,6 @@
 
 import json
-from src.scramble_utils import scramble_sentence  
+from scramble_utils import scramble_sentence  
 
 def load_raw_sentences(path):
  with open(path, "r", encoding="utf-8") as file:
@@ -99,12 +99,8 @@ def load_json_dataset(clean_path, scrambled_path, target_path):
    with open(target_path) as f:
         target_processed = json.load(f)
 
-   # Compress list of dictionaries into a dictionary. 
-   clean_by_id = {r["id"]: r["text"] for r in clean_processed}
-   scrambled_by_id = {r["id"]: r["text"] for r in scrambled_processed}
-   target_by_id = {r["id"]: r["word"] for r in target_processed}
 
-   ids, clean_sentences, scrambled_sentences, target_words = align_by_id(clean_by_id, scrambled_by_id,target_by_id)
+   ids, clean_sentences, scrambled_sentences, target_words = align_by_id(clean_processed, scrambled_processed,target_processed)
 
    return ids, clean_sentences, scrambled_sentences, target_words
 

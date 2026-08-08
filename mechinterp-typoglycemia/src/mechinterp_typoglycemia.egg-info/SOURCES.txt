@@ -1,8 +1,0 @@
-pyproject.toml
-src/data_utils.py
-src/scramble_utils.py
-src/mechinterp_typoglycemia.egg-info/PKG-INFO
-src/mechinterp_typoglycemia.egg-info/SOURCES.txt
-src/mechinterp_typoglycemia.egg-info/dependency_links.txt
-src/mechinterp_typoglycemia.egg-info/top_level.txt
-tests/test-scramble.py

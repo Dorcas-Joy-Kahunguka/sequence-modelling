@@ -9,3 +9,4 @@ print(cst_list)
 data_utils.generate_cst_json(cst_list)
 
 #data_utils.build_and_generate_cst_json(sentences)
+
