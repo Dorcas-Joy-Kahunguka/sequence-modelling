@@ -1,6 +1,6 @@
 
 import json
-from src.scramble_utils import scramble_sentence   
+from src import scramble_utils    
 
 def load_raw_sentences(path):
  with open(path, "r", encoding="utf-8") as file:
@@ -33,7 +33,7 @@ def build_cst_triplets(sentences):
     #For each sentence, produce a clean/scrambled pair and the target last word
     cst_triplets = []
     for context, target in split_context_target(sentences):
-        scrambled_context = scramble_sentence(context)
+        scrambled_context = scramble_utils.scramble_sentence(context)
         cst_triplets.append({
             "clean_context": context,
             "scrambled_context": scrambled_context,
