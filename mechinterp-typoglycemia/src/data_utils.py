@@ -1,7 +1,6 @@
 
 import json
-from src import scramble_utils 
-from scramble_utils import scramble_sentence   
+from src.scramble_utils import scramble_sentence   
 
 def load_raw_sentences(path):
  with open(path, "r", encoding="utf-8") as file:
