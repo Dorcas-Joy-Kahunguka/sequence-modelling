@@ -2,58 +2,18 @@
 from __future__ import annotations
 
 import json
-import re
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Optional
+from src.data_utils import load_cache_record
 
 import pandas as pd
 import torch
-import torch.nn.functional as F
 
 
-# --------------------------------------------------------------------------- #
-# Loading
-# --------------------------------------------------------------------------- #
-
-def load_bos_token(path: str | Path) -> dict:
-    """Load the bos token metadata json. Returns the raw dict as saved."""
-    with open(path, "r") as f:
-        return json.load(f)
 
 
-def load_records(csv_path: Optional[str | Path] = None,
-                  json_path: Optional[str | Path] = None) -> pd.DataFrame:
-    """
-    Load the records file. Prefers CSV if both are given (JSON is treated as
-    a fallback / alternate source of truth). Raises if neither is provided
-    or found.
-    """
-    if csv_path is not None and Path(csv_path).exists():
-        return pd.read_csv(csv_path)
-    if json_path is not None and Path(json_path).exists():
-        return pd.read_json(json_path)
-    raise FileNotFoundError(
-        f"Could not find records file at csv_path={csv_path!r} or json_path={json_path!r}"
-    )
 
-
-def load_cache_record(cache_path: str | Path) -> dict:
-    """
-    Load a single per-record .pt cache file. Tries mmap=True (lazy tensor
-    loading, keeps memory down since we usually only touch 'tokens' and
-    'str_tokens') and falls back to a normal load for older torch versions
-    or non-mmap-compatible files.
-    """
-    cache_path = str(cache_path)
-    try:
-        return torch.load(cache_path, map_location="cpu", mmap=True, weights_only=False)
-    except TypeError:
-        # older torch without mmap kwarg
-        return torch.load(cache_path, map_location="cpu", weights_only=False)
-    except Exception:
-        # mmap can fail on some files (e.g. non-zipfile serialization); fall back
-        return torch.load(cache_path, map_location="cpu", weights_only=False)
 
 
 # --------------------------------------------------------------------------- #
